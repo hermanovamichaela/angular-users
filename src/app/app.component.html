@@ -1,0 +1,79 @@
+<hello name="{{ name }}"></hello>
+<body>
+  <!-- Seznam Users -->
+  <div class="seznam">
+    <div class="user" *ngFor="let user of users">
+      <div
+        *ngIf="
+          user.userId !== '' &&
+          user.id !== null &&
+          user.title !== '' &&
+          user.completed !== ''
+        "
+      >
+        <div>
+          User: {{ user.userId }}
+          <input *ngIf="editExistingUser === true">
+        </div>
+        <div>
+          ID: {{ user.id }}
+        </div>
+        <div>
+          Title: {{ user.title }}
+        </div>
+        <div>
+          Completed: {{ user.completed }}
+        </div>
+        <div class="user_buttons">
+          <button class="update_button" (click)="editUser(user.id)">
+            Edit
+          </button>
+          <button class="delete_button" (click)="deleteUser(user.id)">
+            Delete
+          </button>
+        </div>
+        <div style="display: none;" *ngIf="createdUser === true">
+          <div>User: {{ newOneUser.userId }}</div>
+          <div>ID: {{ newOneUser.id }}</div>
+          <div>Title: {{ newOneUser.title }}</div>
+          <div>Completed: {{ newOneUser.completed }}</div>
+          <div class="user_buttons">
+            <button class="update_button" (click)="editUser(user.id)">
+              Edit
+            </button>
+            <button class="delete_button" (click)="deleteUser(user.id)">
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Inputs for new User -->
+    <div class="new_inputs" *ngIf="visibleInputs === true">
+      <div class="input_user">
+        User ID
+        <input class="input_user_id" [(ngModel)]="newOneUser.userId" />
+      </div>
+      <div class="input_user">
+        ID
+        <input class="input_id" [(ngModel)]="newOneUser.id" />
+      </div>
+      <div class="input_user">
+        Title
+        <input class="input_title" [(ngModel)]="newOneUser.title" />
+      </div>
+      <div class="input_completed">
+        Completed
+        <input class="input_completed" [(ngModel)]="newOneUser.completed" />
+      </div>
+      <button class="save_user" (click)="saveUser()">Save User</button>
+    </div>
+
+    <!-- Buttons CREATE and DELETE ALL -->
+    <div class="buttons">
+      <button class="create_new" (click)="newUser()">Create</button>
+      <button class="delete_all" (click)="deleteAll()">Delete all</button>
+    </div>
+  </div>
+</body>

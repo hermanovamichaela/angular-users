@@ -1,0 +1,19 @@
+p {
+  font-family: Lato;
+}
+
+.seznam {
+  display: block;
+  margin-left: 2%;
+}
+
+.user {
+  margin-bottom: 2%;
+}
+
+.user_buttons {
+  margin-left: 2%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: flex;
+}
